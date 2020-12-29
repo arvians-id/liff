@@ -97,31 +97,31 @@ const min = id => {
     $('.jmlPesanan').html(pesanan.length);
     dataPesanan();
 }
-const dataPesanan = () => {
-    let showPesanan = '';
-    let dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
-    if (dataPesanan.length > 0) {
-        dataPesanan.forEach((val, i) => {
-            showPesanan += `<tr>
-                                    <td scope="row">${(i + 1)}</td>
-                                    <td>${val.makanan}</td>
-                                    <td>Rp. ${val.harga}</td>
-                                </tr> `;
-        })
-    } else {
-        showPesanan = `<tr>
-                                <td colspan="3">
-                                    <div class="alert alert-danger" role="alert">
-                                        Pesanan kamu masih kosong nih, yuk pesen dulu sekarang.
-                                    </div>
-                                </td>
-                            </tr>`;
-    }
-    $('#showPesanan').html(showPesanan);
+// const dataPesanan = () => {
+//     let showPesanan = '';
+//     let dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
+//     if (dataPesanan.length > 0) {
+//         dataPesanan.forEach((val, i) => {
+//             showPesanan += `<tr>
+//                                     <td scope="row">${(i + 1)}</td>
+//                                     <td>${val.makanan}</td>
+//                                     <td>Rp. ${val.harga}</td>
+//                                 </tr> `;
+//         })
+//     } else {
+//         showPesanan = `<tr>
+//                                 <td colspan="3">
+//                                     <div class="alert alert-danger" role="alert">
+//                                         Pesanan kamu masih kosong nih, yuk pesen dulu sekarang.
+//                                     </div>
+//                                 </td>
+//                             </tr>`;
+//     }
+//     $('#showPesanan').html(showPesanan);
 
-}
+// }
 $(document).ready(function () {
-    dataPesanan();
+    // dataPesanan();
 
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     let showData = '';
