@@ -136,7 +136,7 @@ const pesanSekarang = () => {
             }]).then(function () {
                 alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
             }).catch(function (error) {
-                alert('Aduh kok error ya...');
+                alert('Aduh kok error ya...' + error);
             });
         }
     } else {
