@@ -131,7 +131,7 @@ const pesanSekarang = () => {
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': data
+                'text': "data"
             }]).then(function () {
                 alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
             }).catch(function (error) {
