@@ -52,8 +52,8 @@ function initializeApp() {
     registerButtonHandlers();
 
     if (liff.isLoggedIn()) {
-        $('#beforeLogin').css('display', 'none')
-        $('#afterLogin').show()
+        // $('#beforeLogin').css('display', 'none')
+        // $('#afterLogin').show()
         document.getElementById('liffLoginButton').disabled = true;
         liff.getProfile()
             .then(profile => {
@@ -66,8 +66,8 @@ function initializeApp() {
                 console.log('error', err);
             })
     } else {
-        $('#beforeLogin').show()
-        $('#afterLogin').hide()
+        // $('#beforeLogin').show()
+        // $('#afterLogin').hide()
         document.getElementById('liffLogoutButton').disabled = true;
     }
 }

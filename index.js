@@ -105,7 +105,7 @@ const dataPesanan = () => {
                                 <td scope="row">${(i + 1)}</td>
                                 <td>${val.makanan}</td>
                                 <td>Rp. ${val.harga}</td>
-                                <td><a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-lg" onclick="hapusPesanan(${val.id})">-</a></td>
+                                <td><a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-lg" onclick="hapusPesanan(${val.id}, ${val.idMakanan})">-</a></td>
                             </tr> `;
         })
     } else {
@@ -119,7 +119,8 @@ const dataPesanan = () => {
     }
     $('#showPesanan').html(showPesanan);
 }
-const hapusPesanan = id => {
+const hapusPesanan = (id, idMakanan) => {
+    const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     const pesanan = JSON.parse(localStorage.getItem('pesanan'));
     let startDelete = 0;
     pesanan.forEach((val, i) => {
@@ -130,8 +131,19 @@ const hapusPesanan = id => {
     })
     localStorage.setItem('pesanan', JSON.stringify(pesanan));
 
+    let sum = 0;
+    dataMakanan.forEach((val, i) => {
+        if (parseInt(localStorage.totalHarga) > 0) {
+            if (val.id == idMakanan) {
+                sum = parseInt(localStorage.totalHarga) - val.harga;
+            }
+        } else {
+            sum = 0;
+        }
+    })
+    localStorage.setItem('totalHarga', sum);
     $('#totalPesanan').html(pesanan.length > 0 ? "Total Pesanan : " + pesanan.length : '');
-    $('#totalHarga').html("Reload untuk mengetahui total harga");
+    $('#totalHarga').html(localStorage.totalHarga != 0 ? "Total Harga : Rp. " + localStorage.totalHarga : '');
     $('.jmlPesanan').html(pesanan.length);
     dataPesanan()
 }
