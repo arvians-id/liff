@@ -126,25 +126,25 @@ const pesanSekarang = () => {
         liff.getProfile()
             .then(profile => {
                 const name = profile.displayName;
+
+                let data = `--- KANTENEN AJA ---\n Hi ${name},\n\nTerima kasih telah memesan di Kantenen Aja, berikut ini adalah daftar pesanan kamu\n\nPesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}\nTotal Pesanan : ${dataPesanan.length}\nTotal Harga : ${totalHarga}\n\nPesanan kamu akan segera diproses ya jadi mohon tunggu sebentar :) Terima Kasih`;
+
+                if (!liff.isInClient()) {
+                    sendAlertIfNotInClient();
+                } else {
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': data
+                    }]).then(function () {
+                        alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
+                    }).catch(function (error) {
+                        alert('Aduh kok error ya...' + error);
+                    });
+                }
             })
             .catch((err) => {
                 console.log('error', err);
             })
-
-        let data = `--- KANTENEN AJA ---\n Hi ${name},\n\nTerima kasih telah memesan di Kantenen Aja, berikut ini adalah daftar pesanan kamu\n\nPesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}\nTotal Pesanan : ${dataPesanan.length}\nTotal Harga : ${totalHarga}\n\nPesanan kamu akan segera diproses ya jadi mohon tunggu sebentar :) Terima Kasih`;
-
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': data
-            }]).then(function () {
-                alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
-            }).catch(function (error) {
-                alert('Aduh kok error ya...' + error);
-            });
-        }
     } else {
         alert('Kamu belum memilih makanan nih:( yuk cari makan dulu')
     }
