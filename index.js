@@ -1,4 +1,3 @@
-
 const tambahMenu = () => {
     if ($('[name="kategori"]').val() == null || $('[name="makanan"]').val() == '' || $('[name="keterangan"]').val() == '' || $('[name="harga"]').val() == '') {
         let showError = `<div class="alert alert-danger" role="alert">
@@ -106,6 +105,7 @@ const dataPesanan = () => {
                                 <td scope="row">${(i + 1)}</td>
                                 <td>${val.makanan}</td>
                                 <td>Rp. ${val.harga}</td>
+                                <td><a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-lg" onclick="hapusPesanan(${val.id})">-</a></td>
                             </tr> `;
         })
     } else {
@@ -118,6 +118,22 @@ const dataPesanan = () => {
                         </tr>`;
     }
     $('#showPesanan').html(showPesanan);
+}
+const hapusPesanan = id => {
+    const pesanan = JSON.parse(localStorage.getItem('pesanan'));
+    let startDelete = 0;
+    pesanan.forEach((val, i) => {
+        if (val.id == id) {
+            pesanan.splice(startDelete, 1)
+        }
+        startDelete++;
+    })
+    localStorage.setItem('pesanan', JSON.stringify(pesanan));
+
+    $('#totalPesanan').html(pesanan.length > 0 ? "Total Pesanan : " + pesanan.length : '');
+    $('#totalHarga').html("Reload untuk mengetahui total harga");
+    $('.jmlPesanan').html(pesanan.length);
+    dataPesanan()
 }
 const pesanSekarang = () => {
     const dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
@@ -151,6 +167,9 @@ const pesanSekarang = () => {
 }
 $(document).ready(function () {
     dataPesanan();
+    const pesanan = JSON.parse(localStorage.getItem('pesanan'));
+    $('.jmlPesanan').html(pesanan.length);
+
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     let showData = '';
 
