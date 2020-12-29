@@ -123,9 +123,7 @@ const pesanSekarang = () => {
     const dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
     if (dataPesanan.length > 0) {
         const totalHarga = localStorage.getItem('totalHarga');
-        let data = `Pesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}
-        Total Pesanan : ${dataPesanan.length}
-        Total Harga : ${totalHarga}`;
+        let data = `Pesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}\nTotal Pesanan : ${dataPesanan.length}\nTotal Harga : ${totalHarga}`;
 
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();

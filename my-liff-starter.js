@@ -1,12 +1,10 @@
 window.onload = function () {
-    const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1655326860-LG4Jmvrx";   // change the default LIFF value if you are not using a node server
+    const useNodeJS = false;
+    const defaultLiffId = "1655326860-LG4Jmvrx";
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
 
-    // if node is used, fetch the environment variable and pass it to the LIFF method
-    // otherwise, pass defaultLiffId
     if (useNodeJS) {
         fetch('/send-id')
             .then(function (reqResponse) {
@@ -53,7 +51,6 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     registerButtonHandlers();
 
-    // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         $('#beforeLogin').css('display', 'none')
         $('#afterLogin').show()
@@ -78,7 +75,7 @@ function initializeApp() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://kantenen-aja.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://kantenen-aja.herokuapp.com/',
             external: true
         });
     });
@@ -106,5 +103,5 @@ function registerButtonHandlers() {
 }
 
 function sendAlertIfNotInClient() {
-    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+    alert('Sayangnya tidak bisa dilakukan pada eksternal browser :( yuk beralih ke line :)');
 }
