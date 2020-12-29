@@ -121,7 +121,6 @@ const dataPesanan = () => {
 }
 const pesanSekarang = () => {
     const dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
-    console.log(dataPesanan.length > 0);
     if (dataPesanan.length > 0) {
         const totalHarga = localStorage.getItem('totalHarga');
         let data = `Pesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}
