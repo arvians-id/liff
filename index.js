@@ -122,7 +122,6 @@ const dataPesanan = () => {
 
 $(document).ready(function () {
     dataPesanan();
-
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     let showData = '';
 
