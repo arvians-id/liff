@@ -1,6 +1,6 @@
 window.onload = function () {
     const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1655326860-6OnLQZmA";   // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "1655326860-LG4Jmvrx";   // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -74,7 +74,7 @@ function initializeApp() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://arvianscatatan.herokuapp.com', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://kantenen-aja.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
             external: true
         });
     });
