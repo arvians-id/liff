@@ -119,7 +119,30 @@ const dataPesanan = () => {
     }
     $('#showPesanan').html(showPesanan);
 }
-
+const pesanSekarang = () => {
+    const dataPesanan = JSON.parse(localStorage.getItem('pesanan'));
+    console.log(dataPesanan.length > 0);
+    if (dataPesanan.length > 0) {
+        const totalHarga = localStorage.getItem('totalHarga');
+        let data = `Pesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}
+        Total Pesanan : ${dataPesanan.length}
+        Total Harga : ${totalHarga}`
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': data
+            }]).then(function () {
+                alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
+            }).catch(function (error) {
+                alert('Aduh kok error ya...');
+            });
+        }
+    } else {
+        alert('Kamu belum memilih makanan nih:( yuk cari makan dulu')
+    }
+}
 $(document).ready(function () {
     dataPesanan();
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
