@@ -125,13 +125,14 @@ const pesanSekarang = () => {
         const totalHarga = localStorage.getItem('totalHarga');
         let data = `Pesanan Kamu : ${dataPesanan.map(item => item.makanan).join(',')}
         Total Pesanan : ${dataPesanan.length}
-        Total Harga : ${totalHarga}`
+        Total Harga : ${totalHarga}`;
+
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "data"
+                'text': data
             }]).then(function () {
                 alert('Berhasil, pesanan kamu akan segera dibuatkan yaa');
             }).catch(function (error) {
