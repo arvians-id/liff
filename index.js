@@ -113,7 +113,7 @@ const dataPesanan = () => {
         })
     } else {
         showPesanan = `<tr>
-                            <td colspan="3">
+                            <td colspan="4">
                                 <div class="alert alert-danger" role="alert">
                                     Pesanan kamu masih kosong nih, yuk pesen dulu sekarang.
                                 </div>
@@ -184,6 +184,7 @@ $(document).ready(function () {
     dataPesanan();
     const pesanan = JSON.parse(localStorage.getItem('pesanan'));
     $('.jmlPesanan').html(pesanan.length == null ? 0 : pesanan.length);
+    console.log(pesanan.length)
 
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     let showData = '';
