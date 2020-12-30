@@ -182,9 +182,6 @@ const pesanSekarang = () => {
 }
 $(document).ready(function () {
     dataPesanan();
-    const pesanan = JSON.parse(localStorage.getItem('pesanan'));
-    $('.jmlPesanan').html(pesanan.length == null ? 0 : pesanan.length);
-    console.log(pesanan.length)
 
     const dataMakanan = JSON.parse(localStorage.getItem('dataMakanan'));
     let showData = '';
