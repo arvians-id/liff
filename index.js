@@ -1,3 +1,6 @@
+/**
+ * @author Widdy Arfiansyah
+ */
 const tambahMenu = () => {
     if ($('[name="kategori"]').val() == null || $('[name="makanan"]').val() == '' || $('[name="keterangan"]').val() == '' || $('[name="harga"]').val() == '') {
         let showError = `<div class="alert alert-danger" role="alert">
